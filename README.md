@@ -1,3 +1,5 @@
+# Creative Project 3: BrettFeed Quiz
+
 **Assignment Spec:**
 
 In our quizzes, users will be asked repeatedly to choose which of two options they prefer until they are presented with a final result. We will represent a quiz using a binary tree, where leaf nodes represent possible results, and non-leaf nodes (branches) represent choices the user will make. When a user takes a quiz, they will be presented with the choice from the root node of the tree. Based on their response, the system will traverse to either the left or right child of the root. If the node found is a leaf, the user will be shown their result. Otherwise, the process will repeat from the new node until a leaf is reached. See below for a full sample quiz and execution.
