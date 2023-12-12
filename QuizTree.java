@@ -39,8 +39,8 @@ public class QuizTree {
     }
 
     // Has the user take the quiz using a Scanner parameter, 
-    // allowing for user input in the form of an answer to a question
-    // (B, P).
+    // *allowing for user input in the form of an answer to a question
+    // (B, P).*
     public void takeQuiz(Scanner console) {
         boolean done = false;
         QuizTreeNode curr = root;
@@ -71,18 +71,19 @@ public class QuizTree {
                                  rightChoice, leftResult, rightResult);
     }
 
-    // Helper method for addQuestion() to replace a result node 
+    // *Helper method for addQuestion() to replace a result node 
     // with a further question (B). Takes in the String of the result
     // to be replaced, and the two further String choices for the
-    // new question, with both their String results (P).
+    // new question, with both their String results (P). Returns the
+    // modified QuizTreeNode root (R).*
     private QuizTreeNode addQuestionHelper(QuizTreeNode curr, String toReplace,
                                         String leftChoice, String rightChoice,
                                         String leftResult, String rightResult) {
         if (curr != null) {
             if (curr.data.equalsIgnoreCase(END_PREFIX + toReplace)) {
                 curr = new QuizTreeNode(leftChoice + "/" + rightChoice, 
-                                        new QuizTreeNode("END:" + leftResult), 
-                                        new QuizTreeNode("END:" + rightResult));
+                                        new QuizTreeNode(END_PREFIX + leftResult), 
+                                        new QuizTreeNode(END_PREFIX + rightResult));
             } else {
                 curr.left = addQuestionHelper(curr.left, toReplace, leftChoice, 
                                               rightChoice, leftResult, rightResult);
@@ -102,7 +103,7 @@ public class QuizTree {
         outputFile.println(toExport);
     }
 
-    // Helper method for export() to recursively construct the String
+    // Helper method for export() to construct the String
     // to be printed to the file (B). Takes in the current
     // QuizTreeNode as a parameter (P). Returns the representative
     // String (R).
